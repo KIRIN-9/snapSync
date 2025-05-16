@@ -1,6 +1,6 @@
 # SnapSync
 
-Image Q&A app using Gemini AI.
+Image Q&A app .
 
 ## Flow
 

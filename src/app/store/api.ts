@@ -3,13 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export interface ProcessImageResponse {
   result: string;
   timestamp: string;
+  filename?: string;
 }
 
-export interface AutoUploadLatestResponse {
-  result: string;
-  timestamp: string;
-  filename: string;
-}
+// Alias for clarity in the UI
+export type AutoUploadLatestResponse = ProcessImageResponse;
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
@@ -21,6 +19,7 @@ export const api = createApi({
         method: 'POST',
         body: formData,
       }),
+      invalidatesTags: ['AutoUpload'],
     }),
 
     getAutoUploadLatest: builder.query<AutoUploadLatestResponse, void>({
